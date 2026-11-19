@@ -107,6 +107,8 @@
                 <artifactId>maven-jar-plugin</artifactId>
                 <version>${maven-jar-plugin.version}</version>
                 <configuration>
+                    <!-- shade 会替换 target/p6spy.jar；不强制重建时，下次构建会把上次带依赖内容的 shaded jar 当作本项目 jar 再次 shade，导致资源重叠 -->
+                    <forceCreation>true</forceCreation>
                     <archive>
                         <manifest>
                             <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
@@ -181,6 +183,10 @@
                                     </excludes>
                                 </filter>
                             </filters>
+                            <transformers>
+                                <!-- 同步重写 META-INF/services/java.sql.Driver 中的驱动类名，使其指向 relocation 后的类 -->
+                                <transformer implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer"/>
+                            </transformers>
                             <relocations>
                                 <relocation>
                                     <pattern>com.p6spy</pattern>
