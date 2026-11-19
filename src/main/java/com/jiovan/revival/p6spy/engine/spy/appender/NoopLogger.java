@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 Unikue Ltd. All rights reserved.
+ * Copyright (c) 2026 Yookue Ltd. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,10 +14,11 @@
  * limitations under the License.
  */
 
-package com.p6spy.engine.spy.appender;
+package com.jiovan.revival.p6spy.engine.spy.appender;
 
 
 import com.p6spy.engine.logging.Category;
+import com.p6spy.engine.spy.appender.P6Logger;
 
 
 /**
@@ -25,9 +26,9 @@ import com.p6spy.engine.logging.Category;
  *
  * @author David Hsing
  *
- * @reference "https://forum.sentry.io/t/java-sdk-p6spy-log-file/16040/2"
+ * @see "https://forum.sentry.io/t/java-sdk-p6spy-log-file/16040/2"
  */
-@SuppressWarnings({"unused", "JavadocDeclaration", "JavadocLinkAsPlainText"})
+@SuppressWarnings("unused")
 public class NoopLogger implements P6Logger {
     @Override
     public void logSQL(int connectionId, String now, long elapsed, Category category, String prepared, String sql, String url) {
